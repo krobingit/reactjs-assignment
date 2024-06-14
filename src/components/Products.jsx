@@ -1,10 +1,13 @@
 import React from "react";
 import { ProductCard } from "./ProductCard";
 import styled from "styled-components";
+import {small,medium} from "../utils/responsive"
 const ProductsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
+  ${small({justifyContent:"center"})}
+   ${medium({justifyContent:"center"})}
 `;
 
 const ProductImage = styled.img`

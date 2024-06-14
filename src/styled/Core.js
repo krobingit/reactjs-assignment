@@ -13,4 +13,5 @@ flex-direction:row;
 gap: ${(props) => props.gap || "5px"};
 align-items: ${(props) => props.alignItems || "center"};
 justify-content: ${(props) => props.justifyContent || "center"};
+flex-wrap: ${(props) => props.flexWrap};
 `

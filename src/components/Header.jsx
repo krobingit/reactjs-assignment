@@ -1,4 +1,4 @@
-import { OutlinedInput } from "@mui/material";
+import { OutlinedInput, useMediaQuery } from "@mui/material";
 import React, { useState } from "react";
 import styled from "styled-components";
 import SearchIcon from "@mui/icons-material/Search";
@@ -6,6 +6,9 @@ import { HStack } from "../styled/Core";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import { useDebounce } from "../hooks/debounce";
 import { useProductsBySearchKeyword } from "../hooks/products";
+import CustomDrawer from "./Drawer";
+import { small } from "../utils/responsive";
+
 
 //css
 const NavContainer = styled.div`
@@ -14,6 +17,8 @@ const NavContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content:center;
+  flex-wrap:wrap;
 `;
 
 const SiteLogo = styled.h3`
@@ -23,8 +28,9 @@ const SearchInput = styled(OutlinedInput)`
   outline: none;
   width: 35rem;
   height: 2.5rem;
-  margin-left: 10rem;
+  margin-left: 10%;
   margin-right: auto;
+${small({marginBottom:"1rem"})}
   .MuiOutlinedInput-notchedOutline {
     border-radius: 0.8rem;
   }
@@ -70,9 +76,10 @@ export const Header = ({ productsRefetch }) => {
       productsRefetch();
     }
   };
-
+  const smallBreakPointMatches=useMediaQuery('(max-width:500px)')
   return (
     <NavContainer>
+         {smallBreakPointMatches && <div style={{"marginLeft":"2rem"}}><CustomDrawer direction={'left'} /></div> }
       <SiteLogo>
         <HighlightLogo>M</HighlightLogo>oBoo<HighlightLogo>M</HighlightLogo>
       </SiteLogo>
@@ -83,7 +90,7 @@ export const Header = ({ productsRefetch }) => {
         placeholder={"What do you want to buy today?"}
         endAdornment={<SearchIcon />}
       />
-      <HStack gap={"2.5rem"}>
+      {!smallBreakPointMatches &&<HStack gap={"2rem"} flexWrap={'wrap'}>
         {subNavLinks.map(({ name, icon }) => {
           return (
             <NavLink>
@@ -92,7 +99,7 @@ export const Header = ({ productsRefetch }) => {
             </NavLink>
           );
         })}
-      </HStack>
+      </HStack>}
     </NavContainer>
   );
 };

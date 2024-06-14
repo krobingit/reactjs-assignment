@@ -27,7 +27,7 @@ const AdContainer = styled.div`
     #b75852
   );
   width: 95%;
-  height: 7rem;
+  height: fit-content;
   border-radius: 1rem;
   padding: 1rem;
   margin-bottom: 2rem;
