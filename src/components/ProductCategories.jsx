@@ -25,7 +25,7 @@ export const ProductCategories = ({ productsRefetch }) => {
         styles={{
           control: (baseStyles, { isFocused }) => ({
             ...baseStyles,
-            width: "20.75rem",
+            width: smallBreakPointMatches ? "17rem" : "20.75rem",
             marginBottom: "1.5rem",
             outline: "none",
             border: "1px solid #e5e7eb",
@@ -34,9 +34,7 @@ export const ProductCategories = ({ productsRefetch }) => {
               border: "1px solid #e5e7eb",
             },
             borderRadius: "1rem",
-            ...({
-                width: smallBreakPointMatches && "17rem"
-            })
+          
           }),
           menu: (base) => ({
             ...base,
