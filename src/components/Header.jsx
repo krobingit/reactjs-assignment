@@ -12,7 +12,7 @@ import { small } from "../utils/responsive";
 
 //css
 const NavContainer = styled.div`
-  width: 100%;
+  width: 95%;
   height: fit-content;
   display: flex;
   flex-direction: row;
