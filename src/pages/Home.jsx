@@ -42,10 +42,12 @@ const AdText = styled.p`
   font-size: 1.25rem;
   margin-top: 10px;
 `;
+
 export const GlobalContext = createContext({});
 
 export const Home = () => {
   const { data: products, refetch: productsRefetch, isLoading } = useProducts();
+  
   return (
     <GlobalContext.Provider>
       <HomeContainer>

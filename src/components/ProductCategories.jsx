@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useProductCategories, useProductsByCategory } from "../hooks/products";
 import Select from "react-select";
+import { useMediaQuery } from "@mui/material";
 
 export const ProductCategories = ({ productsRefetch }) => {
   const [categoryName, setCategoryName] = useState(null);
@@ -8,6 +9,7 @@ export const ProductCategories = ({ productsRefetch }) => {
   useProductsByCategory(categoryName ? categoryName.value : null);
   //getting product categories
   const { data: categories } = useProductCategories();
+  const smallBreakPointMatches=useMediaQuery('(max-width:500px)')
   if (categories && categories.length > 0)
     return (
       <Select
@@ -32,6 +34,9 @@ export const ProductCategories = ({ productsRefetch }) => {
               border: "1px solid #e5e7eb",
             },
             borderRadius: "1rem",
+            ...({
+                width: smallBreakPointMatches && "17rem"
+            })
           }),
           menu: (base) => ({
             ...base,
@@ -66,14 +71,3 @@ export const ProductCategories = ({ productsRefetch }) => {
       />
     );
 };
-
-/*
-const handleCategoryChange = (e) => {
-    setCategoryName(e.target.value);
-  };
-   <select label={'category'} value={categoryName} onChange={handleCategoryChange}>
-      {categories.map((category) => {
-        return <option key={category.slug} value={category.slug}>{category.name}</option>;
-      })}
-    </select>
-*/

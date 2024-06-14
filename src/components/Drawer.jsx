@@ -61,7 +61,7 @@ const subNavLinks=[
 
   return (
     <div>
-          <Button onClick={toggleDrawer(direction, true)}><MenuIcon /></Button>
+          <Button onClick={toggleDrawer(direction, true)}><MenuIcon style={{color:"#3b3b3b"}} /></Button>
           <Drawer
             anchor={direction}
             open={state[direction]}
